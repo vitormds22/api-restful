@@ -24,11 +24,22 @@ app.get('/clients/:id', function(req, res){
 });
 
 app.post('/clients', function(req, res){
-    
+    const {name, email} = req.body
+
+    // Salvar
+
+    res.json({name, email})
 });
 
 // Para adiquirir apenas um cliente
 app.put('/clients/:id', function(req, res){
+    const { id } = req.params
+    const client = data.find(cli => cli.id = id)
+    const {name} = req.body
+
+    if(!client) return res.status(204).json()
+
+    client
 
 });
 
