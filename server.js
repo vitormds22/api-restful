@@ -39,13 +39,17 @@ app.put('/clients/:id', function(req, res){
 
     if(!client) return res.status(204).json()
 
-    client
+    client.name = name
+    res.json(client)
 
 });
 
 // Para adiquirir apenas um cliente
-;app.delete('/clients/:id', function(req, res){
+app.delete('/clients/:id', function(req, res){
+    const { id } = req.params
+    const clientsFiltered = data.filter(client => client.id != id)
 
+    res.json(clientsFiltered)
 });
 
 app.listen(3000, function(){
